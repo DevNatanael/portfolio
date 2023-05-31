@@ -1,8 +1,9 @@
-import React from 'react'
-
-export default function Home() {
+import {Navbar} from "@/sections/Navbar";
+import React from "react";
+export default function Index() {
   return (
-    <div>home</div>
-  )
+    <div className="app">
+      <Navbar />
+    </div>
+  );
 }
-
