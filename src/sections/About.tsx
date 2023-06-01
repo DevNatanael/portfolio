@@ -13,7 +13,7 @@ export default function About() {
             Meu nome é Natanael, sou apaixonado por tecnologia e resolução de
             problemas. Meu interesse por programação
             começou em fevereiro de 2022 quando ingressei na universidade no
-            curso de ciência da computação na univercidade de fortaleza.
+            curso de ciência da computação na universidade de fortaleza.
           </p>
 
           <p className="about-grid-info-text">
