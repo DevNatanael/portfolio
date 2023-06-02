@@ -1,8 +1,16 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 export default function Experience() {
   const [selected, setSelected] = React.useState(0);
+
+  useEffect(()=>{
+    const transformSelected = () => {
+      const underline = document.querySelector<HTMLElement>(".underline")
+      underline!.style.top= `${selected * 2.5}rem`;
+    }
+    transformSelected();
+  },[selected])
 
   const expereinces = [
     {
@@ -20,7 +28,7 @@ export default function Experience() {
     },
     {
       name: "Tijuca Alimentos",
-      role: "Aprendiz de Desenvolvimento Web",
+      role: "Aprendiz de Desenvolvimento",
       url: "https://www.tijucaalimentos.com/",
       start: "Outubro de 2021",
       end: "Março de 2023",
@@ -61,7 +69,7 @@ export default function Experience() {
                 }`}
                 onClick={() => setSelected(index)}
               >
-                <span>{experience.name}</span>
+                <span>{experience.name.split('Alimentos')}</span>
               </li>
             );
           })}
