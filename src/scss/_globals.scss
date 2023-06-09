@@ -3,6 +3,10 @@ body {
   counter-reset: title;
 }
 
+body,html {
+  scroll-behavior: smooth !important;
+}
+
 * {
   margin: 0;
   padding: 0;
