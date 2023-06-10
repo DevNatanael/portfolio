@@ -19,7 +19,7 @@ export default function Projects() {
     },
     {
       image: "/api.jpg",
-      projectName: "Api Rest Typescript",
+      projectName: "Api Rest Nodejs",
       projectLink: "https://github.com/DevNatanael/Api-rest-solid",
       projectDescription:
         "Api feita com node e typescript utilizando os principios do solid e repository pattern, a api faz um crud para criação de usuários, e pelo fato de utilizar o padrão repository pattern pode salvar os dados em qualquer banco facilmente, sendo assim um sistema altamente escalável, além de utilizar o multer para o envio de imagens.",
