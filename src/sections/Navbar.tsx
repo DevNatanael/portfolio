@@ -1,6 +1,9 @@
+"use client";
 import Logo from "@/components/Logo";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { CgClose } from "react-icons/cg";
 
 export function Navbar() {
   const sectionLinks = [
@@ -9,23 +12,52 @@ export function Navbar() {
     { name: "Trabalho", link: "#work" },
     { name: "Contato", link: "#contact" },
   ];
+
+  const [navbarVisible, setNavbarVisible] = useState(false);
+  const [responsiveNavVisible, setResponsiveNavVisible] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.pageYOffset > 100
+        ? setNavbarVisible(true)
+        : setNavbarVisible(false);
+    });
+  }, []);
   return (
     <nav>
-      <div className="wrapper">
+      <div className={`wrapper ${navbarVisible ? "blur-nav" : ""}`}>
         <div className="brand">
           <Link href="https://github.com/DevNatanael">
             <Logo />
           </Link>
         </div>
+        <div className="nav-responsive-toggle">
+          {responsiveNavVisible ? (
+            <CgClose
+              onClick={(e) => {
+                e.stopPropagation();
+                setResponsiveNavVisible(false);
+              }}
+            />
+          ) : (
+            <GiHamburgerMenu
+              onClick={(e) => {
+                e.stopPropagation();
+                setResponsiveNavVisible(true);
+              }}
+            />
+          )}
+        </div>
         <div className="nav-items">
           <ul className="nav-items-list">
             {sectionLinks.map(({ name, link }) => (
               <li key={name} className="nav-items-list-item">
-                <Link href={link} className="nav-items-list-item-link">{name}</Link>
+                <Link href={link} className="nav-items-list-item-link">
+                  {name}
+                </Link>
               </li>
             ))}
           </ul>
-
         </div>
       </div>
     </nav>
