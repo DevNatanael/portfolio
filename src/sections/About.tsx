@@ -1,9 +1,22 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="about" id="about">
+    <motion.div
+      className="about"
+      id="about"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      variants={{
+        visible: { opacity: 1, y: -50 },
+        hidden: { opacity: 0, y: 0 },
+      }}
+    >
       <div className="title">
         <h2>Sobre mim</h2>
       </div>
@@ -11,9 +24,9 @@ export default function About() {
         <div className="about-grid-info">
           <p className="about-grid-info-text">
             Meu nome é Natanael, sou apaixonado por tecnologia e resolução de
-            problemas. Meu interesse por programação
-            começou em fevereiro de 2022 quando ingressei na universidade no
-            curso de ciência da computação na universidade de fortaleza.
+            problemas. Meu interesse por programação começou em fevereiro de
+            2022 quando ingressei na universidade no curso de ciência da
+            computação na universidade de fortaleza.
           </p>
 
           <p className="about-grid-info-text">
@@ -41,13 +54,13 @@ export default function About() {
         </div>
 
         <div className="about-grid-photo">
-            <div className="overlay"></div>
-            <div className="overlay-border"></div>
-            <div className="about-grid-photo-container">
-                <Image src="/natan3.jpeg" alt="profile" fill/>
-            </div>
+          <div className="overlay"></div>
+          <div className="overlay-border"></div>
+          <div className="about-grid-photo-container">
+            <Image src="/natan3.jpeg" alt="profile" fill />
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

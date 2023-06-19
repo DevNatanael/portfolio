@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
+import { motion } from "framer-motion";
 
 export function Navbar() {
   const sectionLinks = [
@@ -50,12 +51,28 @@ export function Navbar() {
   return (
     <nav>
       <div className={`wrapper ${navbarVisible ? "blur-nav" : ""}`}>
-        <div className="brand">
+        <motion.div
+          className="brand"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+          }}
+        >
           <Link href="https://github.com/DevNatanael">
             <Logo />
           </Link>
-        </div>
-        <div className="nav-responsive-toggle">
+        </motion.div>
+        <motion.div
+          className="nav-responsive-toggle"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+          }}
+        >
           {responsiveNavVisible ? (
             <CgClose
               onClick={(e) => {
@@ -71,15 +88,27 @@ export function Navbar() {
               }}
             />
           )}
-        </div>
-        <div className={`${responsiveNavVisible && "nav-responsive"} nav-items`}>
+        </motion.div>
+        <div
+          className={`${responsiveNavVisible && "nav-responsive"} nav-items`}
+        >
           <ul className="nav-items-list">
-            {sectionLinks.map(({ name, link }) => (
-              <li key={name} className="nav-items-list-item">
+            {sectionLinks.map(({ name, link }, index) => (
+              <motion.li
+                key={name}
+                className="nav-items-list-item"
+                initial={{ opacity: 0, y: -25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeInOut",
+                  delay: 0.3 + index * 0.1,
+                }}
+              >
                 <Link href={link} className="nav-items-list-item-link">
                   {name}
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
