@@ -23,6 +23,30 @@ export function Navbar() {
         : setNavbarVisible(false);
     });
   }, []);
+
+  useEffect(() => {
+    const links = document.querySelectorAll(".nav-items-list-item-link");
+    links.forEach((link) => {
+      link.addEventListener("click", () => setResponsiveNavVisible(false));
+    });
+    const nav = document.querySelector(".nav-items");
+    nav?.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+    const html = document.querySelector("html");
+    html?.addEventListener("click", (e) => {
+      setResponsiveNavVisible(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    const main = document.querySelector("main");
+    if (responsiveNavVisible) {
+      main?.classList.add("blur");
+    } else {
+      main?.classList.remove("blur");
+    }
+  }, [responsiveNavVisible]);
   return (
     <nav>
       <div className={`wrapper ${navbarVisible ? "blur-nav" : ""}`}>
@@ -48,7 +72,7 @@ export function Navbar() {
             />
           )}
         </div>
-        <div className="nav-items">
+        <div className={`${responsiveNavVisible && "nav-responsive"} nav-items`}>
           <ul className="nav-items-list">
             {sectionLinks.map(({ name, link }) => (
               <li key={name} className="nav-items-list-item">
