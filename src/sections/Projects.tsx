@@ -7,7 +7,7 @@ export default function Projects() {
   const projectsData = [
     {
       image: "/sistFin.jpeg",
-      projectName: "Sistema de Finanças",
+      projectName: "Sistema Finanças",
       projectLink: "https://sistema-financas-devnatanael.vercel.app/",
       projectDescription:
         "Um dos primeiros projetos que fiz, basicamente o projeto é uma aplicação web feita em react que está apenas no front-end, o sistema consiste em o usuário poder adicionar e listar seus gastos e receitas de cada mês, assim tendo controle de suas finanças.",
